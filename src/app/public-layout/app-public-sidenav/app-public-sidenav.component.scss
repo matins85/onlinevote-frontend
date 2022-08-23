@@ -1,0 +1,76 @@
+$white: #ffffff;
+$background: #ffffff;
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  overflow-x: hidden;
+  background: $background;
+  opacity: 1;
+  color: $white;
+}
+
+.sidenav2 {
+  width: 500px;
+  overflow-x: hidden;
+  background: $background;
+  opacity: 1;
+  color: $white;
+}
+
+.button {
+  position: fixed;
+  display: none;
+  bottom: 3.3em;
+  right: 1em;
+  z-index: 1000;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background: #cb8a03 0% 0% no-repeat padding-box;
+  color: $white;
+  box-shadow: 0px 3px 6px #00000029;
+  transition: all 0.2s ease-in-out;  
+}
+
+.button i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button2 {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  z-index: 1000;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background: #cb8a03 0% 0% no-repeat padding-box;
+  color: $white;
+  box-shadow: 0px 3px 6px #00000029;
+
+}
+
+.show-scrollTop {
+  display: block;
+  transition: all 0.2s ease-in-out;
+}
+
+.fa {
+  vertical-align: middle;
+}
+
+span.material-icons:before{display:none;}
+span.material-icons:before{display:none;}
+
+
+@media (max-width: 550px) {
+  .sidenav2 {
+    width: 100%;
+  }
+}

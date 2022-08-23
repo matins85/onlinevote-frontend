@@ -1,0 +1,19 @@
+<mat-toolbar class="nav_1">
+    <button mat-icon-button (click)="onPublicHeaderToggleSidenav()" class="hambugger">
+        <span class="material-icons-round">menu_open</span>
+    </button>
+    <img src="assets/images/bida_logo.png" [routerLink]="['/']" class="logo" alt="">
+    <div class="spacer"></div>
+    <button class="signup" mat-button>
+        <span class="material-icons-round">poll</span>
+        Leaderboard
+    </button>
+    <button class="signup" mat-button>
+        <span class="material-icons-round">app_registration</span>
+        Signup
+    </button>
+    <button class="signup" mat-button>
+        <span class="material-icons-round">how_to_vote</span>
+        Vote
+    </button>
+</mat-toolbar>

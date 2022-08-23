@@ -1,0 +1,22 @@
+<ngx-loading-bar [color]="'#CB8A03'" height="5px"></ngx-loading-bar>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #publicsidenav class="sidenav">
+        <div class="main">
+            <app-app-public-sidenav-list (publicsidenavClose)="publicsidenav.close()"></app-app-public-sidenav-list>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content (scroll)="handleScroll($event)" class="mat-sidenav-content">
+        <app-header (publicsidenavToggle)="publicsidenav.toggle()">
+        </app-header>
+
+        <div class="main2">
+            <router-outlet></router-outlet>
+        </div>
+
+        <button mat-mini-fab [class.show-scrollTop]="windowScrolled" (click)="scrollToTop()" class="button">
+            <i class="fa fa-chevron-up" aria-hidden="true"></i>
+        </button>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

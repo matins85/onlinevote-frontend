@@ -1,0 +1,43 @@
+.nav_1 {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 2000;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.logo {
+  width: 150px;
+  height: 50px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.signup {
+  font: normal normal normal 14px/17px Inter;
+  letter-spacing: 2.8px;
+  color: #1a1a1a;
+  padding: 0.5rem;
+  font-weight: 500;
+}
+
+.hambugger {
+  display: none;
+}
+
+@media (max-width: 530px) {
+  .logo {
+    margin-left: 10px;
+  }
+
+  .hambugger {
+    display: block;
+  }
+
+  .signup {
+    display: none;
+  }
+}

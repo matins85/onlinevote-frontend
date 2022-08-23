@@ -1,1 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~material-icons/iconfont/material-icons.css";
+@import "../node_modules/font-awesome/css/font-awesome";
+
+html,
+body {
+  min-height: 100%;
+}
+body {
+  margin: 0;
+}
+
+.success {
+  color: #ffffff;
+  background: #47a83e;
+}
+
+.error {
+  color: #ffffff;
+  background: #b5130e;
+}
+
+.cdk-overlay-container
+  .cdk-overlay-backdrop.cdk-overlay-dark-backdrop.cdk-overlay-backdrop-showing {
+  background: #000000 0% 0% no-repeat padding-box;
+  opacity: 0.6;
+}
+
+.mat-dialog-container {
+  border-radius: 20px !important;
+}
+
+.cdk-global-overlay-wrapper {
+  overflow-y: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* #gradient-0 stop {
+  stop-color: #506ef9;
+}
+
+#gradient-0 stop[offset="0"] {
+  stop-opacity: 0.25;
+}
+
+#gradient-0 stop[offset="1"] {
+  stop-opacity: 0;
+}
+
+.highcharts-color-0 {
+  fill: #506ef9;
+  stroke: #506ef9;
+}
+
+.highcharts-color-0 .highcharts-area {
+  fill-opacity: 1;
+  fill: url(#gradient-0);
+} */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

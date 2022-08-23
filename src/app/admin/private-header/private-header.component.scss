@@ -1,0 +1,48 @@
+$white: #ffffff;
+
+.nav {
+  position: sticky;
+  position: -webkit-sticky;
+  /* For macOS/iOS Safari */
+  top: 0;
+  z-index: 2000;
+  background: $white 0% 0% no-repeat padding-box;
+  opacity: 1;
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .bell,
+  .message,
+  .setting {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+  }
+
+  .setting {
+    margin-right: 10px;
+  }
+
+  ::ng-deep .bell .mat-badge-content {
+    background: #f46a69;
+  }
+
+  ::ng-deep .message .mat-badge-content {
+    background: #34c38f;
+  }
+
+  button img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .toggle-icon {
+    color: black;
+  }
+}

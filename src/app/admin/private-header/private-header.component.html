@@ -1,0 +1,15 @@
+<mat-toolbar
+    class="nav">
+    <!-- <div fxFlex="fxFlex" fxLayout="fxLayout" fxLayoutGap="7px" class="navbar-nav" fxHide.lt-md="fxHide.lt-md"> -->
+
+        <div class="toggle-icon">
+            <!-- fxHide.gt-xs -->
+            <button mat-icon-button (click)="onPrivateHeaderToggleSidenav()" *ngIf="isHandset$ | async">
+                <!-- <mat-icon>menu</mat-icon> -->
+                <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+            </button>
+        </div>
+
+    <span class="spacer"></span>
+
+</mat-toolbar>
