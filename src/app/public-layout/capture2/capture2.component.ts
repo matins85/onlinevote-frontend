@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { SnapshotsService } from 'src/app/services/snapshot.service';
 
 @Component({
-  selector: 'app-capture',
-  templateUrl: './capture.component.html',
-  styleUrls: ['./capture.component.scss'],
+  selector: 'app-capture2',
+  templateUrl: './capture2.component.html',
+  styleUrls: ['./capture2.component.css'],
 })
-export class CaptureComponent implements OnInit {
+export class Capture2Component implements OnInit {
   snapshots: any;
   addNew = false;
   constructor(

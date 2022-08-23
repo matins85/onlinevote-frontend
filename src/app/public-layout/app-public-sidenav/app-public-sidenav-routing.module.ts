@@ -5,6 +5,8 @@ import { AppPublicSidenavComponent } from './app-public-sidenav.component';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { CaptureComponent } from '../capture/capture.component';
 import { SignupComponent } from '../signup/signup.component';
+import { VoteComponent } from '../vote/vote.component';
+import { Vote2Component } from '../vote2/vote2.component';
 
 const routes: Routes = [
   {
@@ -12,11 +14,15 @@ const routes: Routes = [
     component: AppPublicSidenavComponent,
     children: [
       // home
-      { path: '', component: DashboardComponent },
+      { path: 'home', component: DashboardComponent },
       // capture
-      { path: 'capture', component:  CaptureComponent},
+      { path: 'capture', component: CaptureComponent },
       // signup
       { path: 'signup', component: SignupComponent },
+      // vote
+      { path: 'vote', component: VoteComponent },
+      // cast-vote
+      { path: 'cast-vote', component: Vote2Component },
     ],
   },
 ];

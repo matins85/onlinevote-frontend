@@ -3,20 +3,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { register } from '../models/irm';
+import { login } from '../shared/form';
 import { ToggleNavService } from '../sharedService/toggle-nav.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  selector: 'app-vote',
+  templateUrl: './vote.component.html',
+  styleUrls: ['./vote.component.scss'],
 })
-export class SignupComponent implements OnInit {
+export class VoteComponent implements OnInit {
   @ViewChild('fform') feedbackFormDirective: any;
 
   feedbackForm: any = FormGroup;
-  feedback!: register;
-  edit = false;
+  feedback!: login;
+  next = false;
   disabled = false;
   loading = false;
 
@@ -25,27 +25,11 @@ export class SignupComponent implements OnInit {
   filename: any;
 
   formErrors: any = {
-    email: '',
-    name: '',
-    year: '',
-    matric: '',
-    department: '',
+    mat_no: '',
   };
 
   validationMessages: any = {
-    email: {
-      required: 'required.',
-    },
-    name: {
-      required: 'required.',
-    },
-    year: {
-      required: 'required.',
-    },
-    matric: {
-      required: 'required.',
-    },
-    department: {
+    mat_no: {
       required: 'required.',
     },
   };
@@ -62,12 +46,7 @@ export class SignupComponent implements OnInit {
 
   createForm() {
     this.feedbackForm = this.fb.group({
-      email: ['', [Validators.required]],
-      name: ['', [Validators.required]],
-      year: ['', [Validators.required]],
-      matric: ['', [Validators.required]],
-      department: ['', [Validators.required]],
-      position: [''],
+      mat_no: ['', [Validators.required]],
     });
 
     this.feedbackForm.valueChanges.subscribe((data: any) =>
@@ -128,10 +107,9 @@ export class SignupComponent implements OnInit {
       console.log(this.formData);
       this.disabled = false;
       this.loading = false;
-      this.router.navigate(['/'])
+      this.next = true;
     }
   }
 
   ngOnInit(): void {}
-
 }

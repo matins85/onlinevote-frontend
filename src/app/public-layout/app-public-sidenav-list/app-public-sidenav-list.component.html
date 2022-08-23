@@ -1,17 +1,17 @@
 <div class="sidenav">
 
-    <img src="assets/images/bida_logo.png" [routerLink]="['/']" class="logo" alt="">
+    <img src="assets/images/bida_logo.png" [routerLink]="['/']" (click)="onPublicHeaderToggleSidenav()" class="logo" alt="">
 
     <div class="sidenav2">
-        <button class="signup" mat-button>
+        <button class="signup" mat-button [routerLink]="['/home']" routerLinkActive="active" (click)="onPublicHeaderToggleSidenav()">
             <span class="material-icons-round">poll</span>
             Leaderboard
         </button><br>
-        <button class="signup" mat-button>
+        <button class="signup" mat-button [routerLink]="['/capture']" routerLinkActive="active" (click)="onPublicHeaderToggleSidenav()">
             <span class="material-icons-round">app_registration</span>
             Signup
         </button><br>
-        <button class="signup" mat-button>
+        <button class="signup" mat-button [routerLink]="['/vote']" routerLinkActive="active" (click)="onPublicHeaderToggleSidenav()">
             <span class="material-icons-round">how_to_vote</span>
             Vote
         </button><br>

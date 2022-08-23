@@ -42,7 +42,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // components
 import { HeaderComponent } from '../../public-layout/header/header.component';
 import { AppPublicSidenavListComponent } from '../../public-layout/app-public-sidenav-list/app-public-sidenav-list.component';
-
+import { CameraComponent } from '../camera/camera.component';
+import { SnapshotComponent } from '../snapshot/snapshot.component';
+import { Capture2Component } from '../capture2/capture2.component';
+import { Camera2Component } from '../camera2/camera2.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,10 @@ import { AppPublicSidenavListComponent } from '../../public-layout/app-public-si
     // components here  // components which do not have route and chart
     HeaderComponent,
     AppPublicSidenavListComponent,
+    CameraComponent,
+    SnapshotComponent,
+    Capture2Component,
+    Camera2Component,
     // dialog
   ],
   entryComponents: [
@@ -105,6 +112,10 @@ import { AppPublicSidenavListComponent } from '../../public-layout/app-public-si
     // component here
     HeaderComponent,
     AppPublicSidenavListComponent,
+    CameraComponent,
+    SnapshotComponent,
+    Capture2Component,
+    Camera2Component,
     // modules here
     MatListModule,
     MatCardModule,

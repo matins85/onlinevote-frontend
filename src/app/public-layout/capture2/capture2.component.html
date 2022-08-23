@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <app-camera *ngIf="snapshots?.length === 0 || addNew" (photo)="photoTaken($event)"></app-camera>
+    <app-camera2 *ngIf="snapshots?.length === 0 || addNew" (photo)="photoTaken($event)"></app-camera2>
     <button mat-raised-button (click)="addNew = true" *ngIf="snapshots?.length !== 0 && !addNew" class="extra-bottom-margin">Add New Snapshot</button>
     <div *ngFor="let snapshot of snapshots">
         <app-snapshot [photo]="snapshot.imgDataUrl" (click)="goToSnapshot(snapshot)"></app-snapshot>

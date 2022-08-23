@@ -52,12 +52,14 @@ import { HttpService } from './services/http.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { NetworkAwarePreloadingStrategyService2Service } from './services/network-aware-preloading-strategy.service';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { IdentificationService } from './services/identification.service';
+import { RekognitionService } from './services/rekognition.service';
+import { SnapshotsService } from './services/snapshot.service';
+import { Camera2Component } from './public-layout/camera2/camera2.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -113,6 +115,9 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     MatNativeDateModule,
     NetworkAwarePreloadingStrategyService2Service,
     DatePipe,
+    IdentificationService,
+    RekognitionService,
+    SnapshotsService,
   ],
   bootstrap: [AppComponent],
 })

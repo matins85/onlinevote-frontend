@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <video [hidden]="photoData" #video autoplay playsinline></video>
+    <canvas [hidden]="!photoData" #canvas></canvas>
+    <div style="text-align: center;">
+        <button mat-button (click)="takePhoto()" *ngIf="!photoData" class="extra-bottom-margin">Take Photo</button>
+        <button mat-button (click)="resetPhoto()" *ngIf="photoData" class="extra-bottom-margin">Reset Photo</button>
+        <button mat-button (click)="register()" *ngIf="photoData" class="extra-bottom-margin">Continue</button>
+    </div>
+</div>

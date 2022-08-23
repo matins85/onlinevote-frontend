@@ -34,7 +34,8 @@ import { AppPublicSidenavComponent } from './app-public-sidenav.component';
 import { DashboardComponent } from '../dashboard-component/dashboard/dashboard.component';
 import { CaptureComponent } from '../capture/capture.component';
 import { SignupComponent } from '../signup/signup.component';
-
+import { VoteComponent } from '../vote/vote.component';
+import { Vote2Component } from '../vote2/vote2.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,8 @@ import { SignupComponent } from '../signup/signup.component';
     DashboardComponent,
     SignupComponent,
     CaptureComponent,
+    VoteComponent,
+    Vote2Component,
   ],
   imports: [
     CommonModule,

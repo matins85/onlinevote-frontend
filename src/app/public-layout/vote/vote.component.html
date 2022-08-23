@@ -1,0 +1,30 @@
+<div class="wrapper">
+
+    <div class="vote">Vote</div>
+
+    <form class="card-body" novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+        <div>
+            <!-- mat_no -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Mat No.</mat-label>
+                <input matInput formControlName="mat_no" required>
+                <mat-error>{{formErrors.mat_no}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="login_submitt_p">
+            <button mat-button class="update" [disabled]="disabled === true">
+                <span *ngIf="!loading">Continue</span>
+                <div *ngIf="loading" class="loader">
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                </div>
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<app-capture2 *ngIf="next"></app-capture2>

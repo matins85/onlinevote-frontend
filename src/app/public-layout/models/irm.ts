@@ -3,10 +3,18 @@ export interface Profile {
   data: any;
 }
 
-// export interface States {
-//   id: number;
-//   data: any;
-// }
+export interface register {
+  email: string;
+  name: string;
+  year: string;
+  matric: string;
+  department: string;
+  position: string;
+}
+
+export interface login {
+  mat_no: string;
+}
 
 // export interface Year {
 //   id: number;

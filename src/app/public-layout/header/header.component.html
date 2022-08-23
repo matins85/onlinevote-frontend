@@ -4,15 +4,15 @@
     </button>
     <img src="assets/images/bida_logo.png" [routerLink]="['/']" class="logo" alt="">
     <div class="spacer"></div>
-    <button class="signup" mat-button>
+    <button class="signup" mat-button [routerLink]="['/home']" routerLinkActive="active">
         <span class="material-icons-round">poll</span>
         Leaderboard
     </button>
-    <button class="signup" mat-button>
+    <button class="signup" mat-button [routerLink]="['/capture']" routerLinkActive="active">
         <span class="material-icons-round">app_registration</span>
         Signup
     </button>
-    <button class="signup" mat-button>
+    <button class="signup" mat-button [routerLink]="['/vote']" routerLinkActive="active">
         <span class="material-icons-round">how_to_vote</span>
         Vote
     </button>
