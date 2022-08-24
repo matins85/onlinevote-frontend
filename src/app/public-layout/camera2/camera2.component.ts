@@ -12,7 +12,7 @@ import { ToggleNavService } from '../sharedService/toggle-nav.service';
 @Component({
   selector: 'app-camera2',
   templateUrl: './camera2.component.html',
-  styleUrls: ['./camera2.component.css'],
+  styleUrls: ['./camera2.component.scss'],
 })
 export class Camera2Component implements OnInit {
   @ViewChild('video', { static: true })
@@ -22,6 +22,7 @@ export class Camera2Component implements OnInit {
   @Output() photo = new EventEmitter<any>();
   videoElement: any = HTMLVideoElement;
   photoData: any;
+  loading = false;
 
   constructor(private router: Router, private service: ToggleNavService) {}
 
@@ -62,6 +63,9 @@ export class Camera2Component implements OnInit {
 
   register() {
     this.service.setMessage(this.photoData);
-    this.router.navigate(['/cast-vote']);
+    this.loading = true;
+    setTimeout(() => {
+      this.router.navigate(['/cast-vote']);
+    }, 3000);
   }
 }

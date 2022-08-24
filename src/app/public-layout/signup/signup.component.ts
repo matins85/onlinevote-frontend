@@ -27,7 +27,6 @@ export class SignupComponent implements OnInit {
   formErrors: any = {
     email: '',
     name: '',
-    year: '',
     matric: '',
     department: '',
   };
@@ -37,9 +36,6 @@ export class SignupComponent implements OnInit {
       required: 'required.',
     },
     name: {
-      required: 'required.',
-    },
-    year: {
       required: 'required.',
     },
     matric: {
@@ -64,7 +60,6 @@ export class SignupComponent implements OnInit {
     this.feedbackForm = this.fb.group({
       email: ['', [Validators.required]],
       name: ['', [Validators.required]],
-      year: ['', [Validators.required]],
       matric: ['', [Validators.required]],
       department: ['', [Validators.required]],
       position: [''],
@@ -114,7 +109,7 @@ export class SignupComponent implements OnInit {
     this.onValueChanged();
     const feed = this.feedbackFormDirective.invalid;
     if (feed) {
-      this.snackBar.open('Errors in Form fields please check it out!', '', {
+      this.snackBar.open('Errors in Form fields please check it out!', 'x', {
         duration: 5000,
         panelClass: 'error',
         horizontalPosition: 'center',

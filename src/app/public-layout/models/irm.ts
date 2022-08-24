@@ -6,7 +6,6 @@ export interface Profile {
 export interface register {
   email: string;
   name: string;
-  year: string;
   matric: string;
   department: string;
   position: string;

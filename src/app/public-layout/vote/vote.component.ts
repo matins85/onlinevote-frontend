@@ -93,7 +93,7 @@ export class VoteComponent implements OnInit {
     this.onValueChanged();
     const feed = this.feedbackFormDirective.invalid;
     if (feed) {
-      this.snackBar.open('Errors in Form fields please check it out!', '', {
+      this.snackBar.open('Errors in Form fields please check it out!', 'x', {
         duration: 5000,
         panelClass: 'error',
         horizontalPosition: 'center',

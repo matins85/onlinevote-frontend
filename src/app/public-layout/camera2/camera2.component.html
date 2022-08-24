@@ -3,7 +3,17 @@
     <canvas [hidden]="!photoData" #canvas></canvas>
     <div style="text-align: center;">
         <button mat-button (click)="takePhoto()" *ngIf="!photoData" class="extra-bottom-margin">Take Photo</button>
-        <button mat-button (click)="resetPhoto()" *ngIf="photoData" class="extra-bottom-margin">Reset Photo</button>
-        <button mat-button (click)="register()" *ngIf="photoData" class="extra-bottom-margin">Continue</button>
+        <div class="login_submitt_p" *ngIf="photoData">
+            <button mat-button (click)="resetPhoto()" *ngIf="photoData" class="extra-bottom-margin">Reset Photo</button>
+            <button mat-button (click)="register()" class="extra-bottom-margin">
+                <span *ngIf="!loading">Continue</span>
+                <div *ngIf="loading" class="loader">
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                </div>
+            </button>
+        </div>
     </div>
 </div>
