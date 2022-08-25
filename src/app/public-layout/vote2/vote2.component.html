@@ -1,1 +1,146 @@
-<p>vote2 works!</p>
+<div class="wrapper">
+
+    <div class="wrapper2">
+
+        <div class="header">welcome, zainab</div>
+
+        <div class="card">
+            <div class="card-title">departmental level</div>
+            <div class="card-body">
+                <div class="card-body-title">DO social</div>
+                <div class="radio-group">
+                    <mat-radio-group>
+                        <mat-radio-button class="example-margin" value="primary" (click)="add()">
+                            Primary
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="accent" (click)="add()">
+                            Accent
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="warn" (click)="add()">
+                            Warn
+                        </mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <!--  -->
+            <div class="card-body">
+                <div class="card-body-title">DO Sport</div>
+                <div class="radio-group">
+                    <mat-radio-group>
+                        <mat-radio-button class="example-margin" value="primary" (click)="add()">
+                            Primary
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="accent" (click)="add()">
+                            Accent
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="warn" (click)="add()">
+                            Warn
+                        </mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <!--  -->
+            <div class="card-body">
+                <div class="card-body-title">DO academics</div>
+                <div class="radio-group">
+                    <mat-radio-group>
+                        <mat-radio-button class="example-margin" value="primary" (click)="add()">
+                            Primary
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="accent" (click)="add()">
+                            Accent
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="warn" (click)="add()">
+                            Warn
+                        </mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <!--  -->
+            <div class="card-body">
+                <div class="card-body-title">DO software</div>
+                <div class="radio-group">
+                    <mat-radio-group>
+                        <mat-radio-button class="example-margin" value="primary" (click)="add()">
+                            Primary
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="accent" (click)="add()">
+                            Accent
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="warn" (click)="add()">
+                            Warn
+                        </mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUG LEVEL -->
+        <div class="card">
+            <div class="card-title">SUG level</div>
+            <div class="card-body">
+                <div class="card-body-title">President</div>
+                <div class="radio-group">
+                    <mat-radio-group>
+                        <mat-radio-button class="example-margin" value="primary" (click)="add()">
+                            Primary
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="accent" (click)="add()">
+                            Accent
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="warn" (click)="add()">
+                            Warn
+                        </mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <!--  -->
+            <div class="card-body">
+                <div class="card-body-title">Vice president</div>
+                <div class="radio-group">
+                    <mat-radio-group>
+                        <mat-radio-button class="example-margin" value="primary" (click)="add()">
+                            Primary
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="accent" (click)="add()">
+                            Accent
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="warn" (click)="add()">
+                            Warn
+                        </mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <!--  -->
+            <div class="card-body">
+                <div class="card-body-title">Fin/sec</div>
+                <div class="radio-group">
+                    <mat-radio-group>
+                        <mat-radio-button class="example-margin" value="primary" (click)="add()">
+                            Primary
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="accent" (click)="add()">
+                            Accent
+                        </mat-radio-button><br>
+                        <mat-radio-button class="example-margin" value="warn" (click)="add()">
+                            Warn
+                        </mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+            </div>
+
+    </div>
+
+    <div class="login_submitt_p" style="text-align: center;">
+        <button mat-button class="update" (click)="vote()">
+            <span *ngIf="!loading">Vote</span>
+            <div *ngIf="loading" class="loader">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+            </div>
+        </button>
+    </div>
+
+</div>

@@ -6,7 +6,7 @@ mat-sidenav-container {
 }
 
 .sidenav {
-  width: 200px;
+  width: 250px;
   overflow-x: hidden;
   background: $background;
   opacity: 1;
@@ -27,13 +27,13 @@ mat-sidenav-container {
   bottom: 3.3em;
   right: 1em;
   z-index: 1000;
-  font-size: 20px;
   text-align: center;
   border-radius: 50%;
-  background: #cb8a03 0% 0% no-repeat padding-box;
-  color: $white;
+  background: #ffffff 10% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
-  transition: all 0.2s ease-in-out;  
+  transition: all 0.2s ease-in-out;
+  color: black;
+  margin-right: 10px;
 }
 
 .button i {
@@ -53,7 +53,6 @@ mat-sidenav-container {
   background: #cb8a03 0% 0% no-repeat padding-box;
   color: $white;
   box-shadow: 0px 3px 6px #00000029;
-
 }
 
 .show-scrollTop {
@@ -65,9 +64,12 @@ mat-sidenav-container {
   vertical-align: middle;
 }
 
-span.material-icons:before{display:none;}
-span.material-icons:before{display:none;}
-
+span.material-icons:before {
+  display: none;
+}
+span.material-icons:before {
+  display: none;
+}
 
 @media (max-width: 550px) {
   .sidenav2 {

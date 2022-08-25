@@ -5,6 +5,7 @@ import {
   OnInit,
   Output,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToggleNavService } from '../sharedService/toggle-nav.service';
@@ -12,6 +13,7 @@ import { ToggleNavService } from '../sharedService/toggle-nav.service';
 @Component({
   selector: 'app-camera2',
   templateUrl: './camera2.component.html',
+  encapsulation: ViewEncapsulation.Emulated,
   styleUrls: ['./camera2.component.scss'],
 })
 export class Camera2Component implements OnInit {

@@ -1,6 +1,9 @@
 <div class="wrapper">
 
-    <form class="card-body" fxLayoutGap="30px" novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+    <form class="card-body" novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+        
+        <div class="vote">register</div>
+
         <div>
             <!-- email -->
             <mat-form-field class="full-width" appearance="outline">

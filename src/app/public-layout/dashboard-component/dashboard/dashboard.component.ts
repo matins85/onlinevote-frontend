@@ -1,7 +1,6 @@
 import {
   Component,
   ElementRef,
-  HostListener,
   OnInit,
   ViewChild,
   ViewEncapsulation,
@@ -11,18 +10,26 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToggleNavService } from '../../sharedService/toggle-nav.service';
+import { Chart } from 'angular-highcharts';
+import { barChart } from '../../../_helpers/barChart';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated,
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   @ViewChild('card', { static: true })
   card!: ElementRef<HTMLDivElement>;
+
+  barChart = new Chart(barChart);
+  barChart2 = new Chart(barChart);
+  barChart3 = new Chart(barChart);
+
+  loading = true;
 
   constructor(
     private authService: AuthService,

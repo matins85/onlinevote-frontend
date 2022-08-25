@@ -1,1 +1,100 @@
-<p>dashboard</p>
+<div class="wrapper">
+    <div class="card">
+        <div class="left">
+            <div class="left_C">
+                <div>
+                    <button mat-button class="button active">computer science
+                        <span class="material-icons started">fiber_manual_record</span>
+                    </button>
+                </div>
+                <div>
+                    <button mat-button class="button">public admin
+                        <span class="material-icons stop">fiber_manual_record</span>
+                    </button>
+                </div>
+                <div>
+                    <button mat-button class="button">agric department</button>
+                </div>
+                <div>
+                    <button mat-button class="button">otm</button>
+                </div>
+                <div>
+                    <button mat-button class="button">mass com</button>
+                </div>
+                <div>
+                    <button mat-button class="button">computer science</button>
+                </div>
+                <div>
+                    <button mat-button class="button">public admin</button>
+                </div>
+                <div>
+                    <button mat-button class="button">agric department</button>
+                </div>
+                <div>
+                    <button mat-button class="button">otm</button>
+                </div>
+                <div>
+                    <button mat-button class="button">mass com</button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <!-- <div class="not-yet">
+                voting ended!
+            </div> -->
+            <!-- <div style="display: flex; justify-content: center; align-items: center;">
+                <button mat-button class="update">
+                    <div *ngIf="loading" class="loader">
+                        <div class="bubble"></div>
+                        <div class="bubble"></div>
+                        <div class="bubble"></div>
+                        <div class="bubble"></div>
+                    </div>
+                </button>
+            </div> -->
+            <div class="dashboard_select">
+                <div class="dashboard_text">Computer science</div>
+                <select class="form-select" placeholder="Filters">
+                    <option selected>Year</option>
+                    <option value="1">2001</option>
+                    <option value="2">2001</option>
+                    <option value="3">2001</option>
+                </select>
+            </div>
+
+            <div class="right-card">
+                <div class="right-card-title">President</div>
+
+                <div class="chart">
+                    <div class="myChart">
+                        <div class="line" [chart]="barChart"></div>
+                    </div>
+                </div>
+                <div class="winner">
+                    <span class="material-icons-round winner-icon">emoji_events</span>
+                    <div>Molly keh</div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="right-card">
+                <div class="right-card-title">DO social</div>
+
+                <div class="chart">
+                    <div class="myChart">
+                        <div class="line" [chart]="barChart2"></div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="right-card">
+                <div class="right-card-title">DO academics</div>
+
+                <div class="chart">
+                    <div class="myChart">
+                        <div class="line" [chart]="barChart3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

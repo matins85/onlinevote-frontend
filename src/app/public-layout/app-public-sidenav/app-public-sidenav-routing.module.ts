@@ -14,6 +14,8 @@ const routes: Routes = [
     component: AppPublicSidenavComponent,
     children: [
       // home
+      { path: '', component: DashboardComponent },
+      // home
       { path: 'home', component: DashboardComponent },
       // capture
       { path: 'capture', component: CaptureComponent },

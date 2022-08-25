@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -9,6 +9,7 @@ import { ToggleNavService } from '../sharedService/toggle-nav.service';
 @Component({
   selector: 'app-vote',
   templateUrl: './vote.component.html',
+  encapsulation: ViewEncapsulation.Emulated,
   styleUrls: ['./vote.component.scss'],
 })
 export class VoteComponent implements OnInit {

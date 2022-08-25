@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -9,6 +9,7 @@ import { ToggleNavService } from '../sharedService/toggle-nav.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
+  encapsulation: ViewEncapsulation.Emulated,
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
@@ -34,6 +35,7 @@ export class SignupComponent implements OnInit {
   validationMessages: any = {
     email: {
       required: 'required.',
+      email: 'not a valid e-mail.',
     },
     name: {
       required: 'required.',

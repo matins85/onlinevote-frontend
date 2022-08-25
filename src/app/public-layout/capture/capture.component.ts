@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { SnapshotsService } from 'src/app/services/snapshot.service';
 
 @Component({
   selector: 'app-capture',
   templateUrl: './capture.component.html',
+  encapsulation: ViewEncapsulation.Emulated,
   styleUrls: ['./capture.component.scss'],
 })
 export class CaptureComponent implements OnInit {
