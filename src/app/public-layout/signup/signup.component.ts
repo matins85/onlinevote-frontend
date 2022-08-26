@@ -173,7 +173,6 @@ export class SignupComponent implements OnInit {
         delete data.position;
         delete data.aspirant;
       }
-      console.log(data);
       this.httpService.postData(BaseUrl.signup, data).subscribe(
         (data: any) => {
           this.disabled = false;
@@ -187,7 +186,6 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/']);
         },
         (err) => {
-          console.log(err);
           this.loading = false;
           this.disabled = false;
           this.snackBar.open(
@@ -208,7 +206,6 @@ export class SignupComponent implements OnInit {
   collectData() {
     this.httpService.getSingleNoAuth(BaseUrl.list_datas).subscribe(
       (data: any) => {
-        console.log(data);
         this.department = data.department;
         this.position2 = data.postion;
         this.year = data.years;

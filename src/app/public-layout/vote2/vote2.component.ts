@@ -45,7 +45,6 @@ export class Vote2Component implements OnInit {
       const data: any = this.service.getUserData();
       if (data.verified == true) {
         this.data = data.data;
-        console.log(data);
       } else {
         this.router.navigate(['/vote']);
       }
@@ -71,7 +70,6 @@ export class Vote2Component implements OnInit {
     });
     this.sug = sugg[0];
     this.department = departm[0];
-    console.log(this.department);
   }
 
   initAnimations(): void {
@@ -87,11 +85,10 @@ export class Vote2Component implements OnInit {
   listDepartment() {
     this.httpService.getSingleNoAuth(BaseUrl.list_department).subscribe(
       (data: any) => {
-        console.log(data);
         const data2 = data.filter((name: any) => {
           if (
-            name.department.id == this.data.department.id &&
-            name.year.year == this.htmlYear
+            (name.department.id == this.data.department.id) &&
+            (name.year.year == this.htmlYear) && (name.department.department.toLowerCase() != 'sug')
           ) {
             return name;
           }
@@ -106,7 +103,6 @@ export class Vote2Component implements OnInit {
         });
         this.department = data2[0];
         this.sug = data3[0];
-        console.log(this.department);
         this.service.setdataMessage2(data);
       },
       (err) => {}
@@ -144,9 +140,9 @@ export class Vote2Component implements OnInit {
           verticalPosition: 'top',
         });
         this.router.navigate(['/']);
+        this.service.setdataMessage2(undefined);
       },
       (err) => {
-        console.log(err);
         this.loading = false;
         this.snackBar.open(err.error.detail || 'Something went wrong', 'x', {
           duration: 5000,

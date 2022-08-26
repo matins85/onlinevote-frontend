@@ -76,6 +76,7 @@ export class AppPublicSidenavListComponent implements OnInit {
   changeId(data: any) {
     this.service.setSidenavData(data);
     this.service.sendClickEvent();
+    this.router.navigate(['/'])
     this.onPublicHeaderToggleSidenav();
   }
 

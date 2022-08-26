@@ -119,7 +119,6 @@ export class VoteComponent implements OnInit {
             this.service.setUserData({ data: data, verified: false });
           },
           (err) => {
-            console.log(err);
             this.loading = false;
             this.disabled = false;
             this.snackBar.open('Invalid Matric number', 'x', {

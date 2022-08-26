@@ -46,7 +46,6 @@ export class Camera2Component implements OnInit {
 
   ngOnInit() {
     this.videoElement = this.video.nativeElement;
-    console.log(this.video);
 
     navigator.mediaDevices
       .getUserMedia({
@@ -72,7 +71,6 @@ export class Camera2Component implements OnInit {
     );
     this.photoData = canvasElement.toDataURL('image/jpeg', 1.0);
     // this.photo.emit(this.photoData);
-    console.log(this.photoData);
   }
 
   resetPhoto() {
@@ -82,8 +80,10 @@ export class Camera2Component implements OnInit {
   register() {
     this.loading = true;
     const data = {
-      image1: `data:image/jpeg;base64,${this.data.data.profile}`,
-      image2: this.photoData,
+      // image1: `data:image/jpeg;base64,${this.data.data.profile}`,
+      // image2: this.photoData,
+      image1: this.data.data.profile,
+      image2: this.photoData.split('data:image/jpeg;base64,')[1],
     };
     this.httpService.postData(BaseUrl.recognise, data).subscribe(
       (data: any) => {
@@ -91,7 +91,6 @@ export class Camera2Component implements OnInit {
         this.router.navigate(['/cast-vote']);
       },
       (err) => {
-        console.log(err);
         this.loading = false;
         this.snackBar.open('Face do not match', 'x', {
           duration: 5000,

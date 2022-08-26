@@ -78,7 +78,6 @@ export class DashboardComponent implements OnInit {
   collectData() {
     this.httpService.getSingleNoAuth(BaseUrl.list_datas).subscribe(
       (data: any) => {
-        console.log(data);
         this.year = data.years;
         this.service.setdataMessage(data);
       },
@@ -89,7 +88,6 @@ export class DashboardComponent implements OnInit {
   listDepartment() {
     this.httpService.getSingleNoAuth(BaseUrl.list_department).subscribe(
       (data: any) => {
-        console.log(data);
         this.department = data;
         this.service.setdataMessage2(data);
       },
@@ -100,7 +98,6 @@ export class DashboardComponent implements OnInit {
   changeId(data?: any) {
     this.id = data.id;
     this.currentData = data;
-    console.log(data);
   }
 
   ngOnInit(): void {

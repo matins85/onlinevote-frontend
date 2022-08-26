@@ -35,7 +35,6 @@ export class CameraComponent implements OnInit {
 
   ngOnInit() {
     this.videoElement = this.video.nativeElement;
-    console.log(this.video);
 
     navigator.mediaDevices
       .getUserMedia({
@@ -63,7 +62,6 @@ export class CameraComponent implements OnInit {
     );
     this.photoData = canvasElement.toDataURL('image/jpeg', 1.0);
     // this.photo.emit(this.photoData);
-    console.log(this.photoData);
   }
 
   resetPhoto() {
@@ -78,7 +76,6 @@ export class CameraComponent implements OnInit {
   collectData() {
     this.httpService.getSingleNoAuth(BaseUrl.list_datas).subscribe(
       (data: any) => {
-        console.log(data);
         this.service.setdataMessage(data);
       },
       (err) => {}
