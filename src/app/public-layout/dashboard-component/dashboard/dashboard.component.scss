@@ -54,7 +54,10 @@ $white: #ffffff;
 }
 
 .not-yet {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   font: normal normal normal 19px/21px JetBrains Mono;
   font-weight: 550;
   letter-spacing: 0px;

@@ -4,7 +4,7 @@
             <div class="left_C">
                 <div *ngIf="department">
                     <div *ngFor="let d of department;">
-                        <button mat-button [class.active]="d.id == id" (click)="changeId(d.id)" class="button">{{ d?.department?.department }}
+                        <button mat-button [class.active]="d.id == id" (click)="changeId(d)" class="button">{{ d?.department?.department }}
                             <span *ngIf="d.start == true">
                                 <span  class="material-icons started">
                                     fiber_manual_record
@@ -29,9 +29,6 @@
             </div>
         </div>
         <div class="right" #card>
-            <!-- <div class="not-yet">
-                voting ended!
-            </div> -->
             <!-- <div style="display: flex; justify-content: center; align-items: center;">
                 <button mat-button class="update">
                     <div *ngIf="loading" class="loader">
@@ -43,46 +40,33 @@
                 </button>
             </div> -->
             <div class="dashboard_select">
-                <div class="dashboard_text">Computer science</div>
+                <div class="dashboard_text">{{ currentData?.department?.department }}</div>
                 <select class="form-select" placeholder="Filters">
-                    <option selected>Year</option>
-                    <option *ngFor="let y of year" [value]="y?.id">{{ y.year }}</option>
+                    <option selected>{{ htmlYear }}</option>
+                    <!-- <option *ngFor="let y of year" [value]="y?.id">{{ y.year }}</option> -->
                 </select>
             </div>
 
-            <div class="right-card">
-                <div class="right-card-title">President</div>
+            <div *ngIf="currentData?.start == true">
+                <div class="right-card" *ngFor="let n of currentData?.details;">
+                    <div class="right-card-title">{{ n?.position }}</div>
 
-                <div class="chart">
-                    <div class="myChart">
-                        <div class="line" [chart]="barChart"></div>
+                    <div class="chart">
+                        <div class="myChart">
+                            <div class="line" [chart]="barChart"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="winner">
-                    <span class="material-icons-round winner-icon">emoji_events</span>
-                    <div>Molly keh</div>
+                    <!-- <div class="winner">
+                        <span class="material-icons-round winner-icon">emoji_events</span>
+                        <div>Molly keh</div>
+                    </div> -->
                 </div>
             </div>
-            <!--  -->
-            <div class="right-card">
-                <div class="right-card-title">DO social</div>
 
-                <div class="chart">
-                    <div class="myChart">
-                        <div class="line" [chart]="barChart2"></div>
-                    </div>
-                </div>
+            <div class="not-yet" *ngIf="currentData?.start == false">
+                voting closed!
             </div>
-            <!--  -->
-            <div class="right-card">
-                <div class="right-card-title">DO academics</div>
 
-                <div class="chart">
-                    <div class="myChart">
-                        <div class="line" [chart]="barChart3"></div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

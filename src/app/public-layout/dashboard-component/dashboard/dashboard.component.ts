@@ -33,14 +33,13 @@ export class DashboardComponent implements OnInit {
   @ViewChild('card2', { static: true })
   card2!: ElementRef<HTMLDivElement>;
 
-  id = 1;
+  id = 0;
   department: any;
   year: any;
+  currentData: any;
 
   barChart = new Chart(barChart);
-  barChart2 = new Chart(barChart);
-  barChart3 = new Chart(barChart);
-
+  htmlYear = new Date().getFullYear();
   loading = true;
 
   constructor(
@@ -95,8 +94,10 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  changeId(id: number) {
-    this.id = id;
+  changeId(data: any) {
+    this.id = data.id;
+    this.currentData = data;
+    console.log(data);
   }
 
   ngOnInit(): void {
