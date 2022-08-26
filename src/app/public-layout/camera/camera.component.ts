@@ -8,6 +8,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpService } from 'src/app/services/http.service';
+import { BaseUrl } from 'src/environments/environment';
 import { ToggleNavService } from '../sharedService/toggle-nav.service';
 
 @Component({
@@ -25,7 +27,11 @@ export class CameraComponent implements OnInit {
   videoElement: any = HTMLVideoElement;
   photoData: any;
 
-  constructor(private router: Router, private service: ToggleNavService) {}
+  constructor(
+    private router: Router,
+    private service: ToggleNavService,
+    private httpService: HttpService
+  ) {}
 
   ngOnInit() {
     this.videoElement = this.video.nativeElement;
@@ -38,6 +44,8 @@ export class CameraComponent implements OnInit {
       .then((stream) => {
         this.videoElement.srcObject = stream;
       });
+
+    this.collectData();
   }
 
   takePhoto() {
@@ -65,5 +73,15 @@ export class CameraComponent implements OnInit {
   register() {
     this.service.setMessage(this.photoData);
     this.router.navigate(['/signup']);
+  }
+
+  collectData() {
+    this.httpService.getSingleNoAuth(BaseUrl.list_datas).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.service.setdataMessage(data);
+      },
+      (err) => {}
+    );
   }
 }

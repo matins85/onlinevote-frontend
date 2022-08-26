@@ -121,6 +121,13 @@ mat-radio-button {
   background: $white;
 }
 
+.example-margin {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: column;
+}
+
 @keyframes expand {
   0% {
     transform: scale(1);

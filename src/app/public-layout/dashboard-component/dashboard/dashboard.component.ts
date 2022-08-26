@@ -12,6 +12,11 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ToggleNavService } from '../../sharedService/toggle-nav.service';
 import { Chart } from 'angular-highcharts';
 import { barChart } from '../../../_helpers/barChart';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { HttpService } from 'src/app/services/http.service';
+import { BaseUrl } from 'src/environments/environment';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,6 +30,13 @@ export class DashboardComponent implements OnInit {
   @ViewChild('card', { static: true })
   card!: ElementRef<HTMLDivElement>;
 
+  @ViewChild('card2', { static: true })
+  card2!: ElementRef<HTMLDivElement>;
+
+  id = 1;
+  department: any;
+  year: any;
+
   barChart = new Chart(barChart);
   barChart2 = new Chart(barChart);
   barChart3 = new Chart(barChart);
@@ -33,11 +45,26 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private shared: ToggleNavService
-  ) {}
+    private snackBar: MatSnackBar,
+    public sanitizer: DomSanitizer,
+    private router: Router,
+    private service: ToggleNavService,
+    private httpService: HttpService
+  ) {
+    this.department = this.service.getdataMessage2();
+    const data: any = this.service.getdataMessage();
+    this.year = data?.years;
+  }
 
   initAnimations(): void {
     gsap.from(this.card.nativeElement.children, {
+      delay: 0.5,
+      duration: 0.4,
+      y: -40,
+      opacity: 0,
+      stagger: 0.15,
+    });
+    gsap.from(this.card2.nativeElement.children, {
       delay: 0.5,
       duration: 0.4,
       x: -40,
@@ -46,7 +73,35 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  collectData() {
+    this.httpService.getSingleNoAuth(BaseUrl.list_datas).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.year = data.years;
+        this.service.setdataMessage(data);
+      },
+      (err) => {}
+    );
+  }
+
+  listDepartment() {
+    this.httpService.getSingleNoAuth(BaseUrl.list_department).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.department = data;
+        this.service.setdataMessage2(data);
+      },
+      (err) => {}
+    );
+  }
+
+  changeId(id: number) {
+    this.id = id;
+  }
+
   ngOnInit(): void {
-    // this.initAnimations();
+    this.initAnimations();
+    this.listDepartment();
+    this.collectData();
   }
 }

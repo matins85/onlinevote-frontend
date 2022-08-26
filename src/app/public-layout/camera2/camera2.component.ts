@@ -7,7 +7,11 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { data } from 'jquery';
+import { HttpService } from 'src/app/services/http.service';
+import { BaseUrl } from 'src/environments/environment';
 import { ToggleNavService } from '../sharedService/toggle-nav.service';
 
 @Component({
@@ -25,8 +29,20 @@ export class Camera2Component implements OnInit {
   videoElement: any = HTMLVideoElement;
   photoData: any;
   loading = false;
+  data: any;
 
-  constructor(private router: Router, private service: ToggleNavService) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private service: ToggleNavService,
+    private httpService: HttpService
+  ) {
+    if (this.service.getUserData() == undefined) {
+      this.router.navigate(['/vote']);
+    } else {
+      this.data = this.service.getUserData();
+    }
+  }
 
   ngOnInit() {
     this.videoElement = this.video.nativeElement;
@@ -64,10 +80,26 @@ export class Camera2Component implements OnInit {
   }
 
   register() {
-    this.service.setMessage(this.photoData);
     this.loading = true;
-    setTimeout(() => {
-      this.router.navigate(['/cast-vote']);
-    }, 3000);
+    const data = {
+      image1: `data:image/jpeg;base64,${this.data.data.profile}`,
+      image2: this.photoData,
+    };
+    this.httpService.postData(BaseUrl.recognise, data).subscribe(
+      (data: any) => {
+        this.service.setUserData({ data: this.data.data, verified: true });
+        this.router.navigate(['/cast-vote']);
+      },
+      (err) => {
+        console.log(err);
+        this.loading = false;
+        this.snackBar.open('Face do not match', 'x', {
+          duration: 5000,
+          panelClass: 'error',
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+      }
+    );
   }
 }

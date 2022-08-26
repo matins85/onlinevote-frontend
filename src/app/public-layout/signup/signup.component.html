@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-    <form class="card-body" novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+    <form #card class="card-body" novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
         
         <div class="vote">register</div>
 
@@ -33,8 +33,7 @@
             <mat-form-field  class="full-width" appearance="outline">
                 <mat-label>Department</mat-label>
                 <mat-select matInput formControlName="department" required>
-                    <mat-option value="Formal">Formal</mat-option>
-                    <mat-option value="Informal">Informal</mat-option>
+                    <mat-option *ngFor="let n of department" [value]="n?.id" (click)="selectposition(n?.id)">{{ n?.department }}</mat-option>                    
                 </mat-select>
                 <mat-error>{{formErrors.department}}</mat-error>
             </mat-form-field>
@@ -44,8 +43,7 @@
             <mat-form-field  class="full-width" appearance="outline">
                 <mat-label>Aspirant Position</mat-label>
                 <mat-select matInput formControlName="position">
-                    <mat-option value="Formal">Formal</mat-option>
-                    <mat-option value="Informal">Informal</mat-option>
+                    <mat-option *ngFor="let n of position" [value]="n?.id">{{ n?.position }}</mat-option>
                 </mat-select>
                 <mat-error>{{formErrors.position}}</mat-error>
             </mat-form-field>

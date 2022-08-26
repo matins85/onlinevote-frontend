@@ -7,6 +7,10 @@ export interface login {
   password: string;
 }
 
+export interface login_vote {
+  mat_no: string;
+}
+
 export interface signup {
   first_name: string;
   last_name: string;

@@ -1,44 +1,34 @@
 <div class="wrapper">
     <div class="card">
-        <div class="left">
+        <div class="left" #card2>
             <div class="left_C">
-                <div>
-                    <button mat-button class="button active">computer science
-                        <span class="material-icons started">fiber_manual_record</span>
-                    </button>
+                <div *ngIf="department">
+                    <div *ngFor="let d of department;">
+                        <button mat-button [class.active]="d.id == id" (click)="changeId(d.id)" class="button">{{ d?.department?.department }}
+                            <span *ngIf="d.start == true">
+                                <span  class="material-icons started">
+                                    fiber_manual_record
+                                </span>
+                            </span>
+                            <span *ngIf="d.start == false">
+                                <span class="material-icons stop">
+                                fiber_manual_record
+                                </span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <button mat-button class="button">public admin
-                        <span class="material-icons stop">fiber_manual_record</span>
-                    </button>
-                </div>
-                <div>
-                    <button mat-button class="button">agric department</button>
-                </div>
-                <div>
-                    <button mat-button class="button">otm</button>
-                </div>
-                <div>
-                    <button mat-button class="button">mass com</button>
-                </div>
-                <div>
-                    <button mat-button class="button">computer science</button>
-                </div>
-                <div>
-                    <button mat-button class="button">public admin</button>
-                </div>
-                <div>
-                    <button mat-button class="button">agric department</button>
-                </div>
-                <div>
-                    <button mat-button class="button">otm</button>
-                </div>
-                <div>
-                    <button mat-button class="button">mass com</button>
+            </div>
+            <div *ngIf="!department" style="display: flex; justify-content: center; align-items: center;">
+                <div class="loader">
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
                 </div>
             </div>
         </div>
-        <div class="right">
+        <div class="right" #card>
             <!-- <div class="not-yet">
                 voting ended!
             </div> -->
@@ -56,9 +46,7 @@
                 <div class="dashboard_text">Computer science</div>
                 <select class="form-select" placeholder="Filters">
                     <option selected>Year</option>
-                    <option value="1">2001</option>
-                    <option value="2">2001</option>
-                    <option value="3">2001</option>
+                    <option *ngFor="let y of year" [value]="y?.id">{{ y.year }}</option>
                 </select>
             </div>
 

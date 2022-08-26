@@ -3,7 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { login } from '../shared/form';
+import { HttpService } from 'src/app/services/http.service';
+import { BaseUrl } from 'src/environments/environment';
+import { login_vote } from '../shared/form';
 import { ToggleNavService } from '../sharedService/toggle-nav.service';
 
 @Component({
@@ -16,7 +18,7 @@ export class VoteComponent implements OnInit {
   @ViewChild('fform') feedbackFormDirective: any;
 
   feedbackForm: any = FormGroup;
-  feedback!: login;
+  feedback!: login_vote;
   next = false;
   disabled = false;
   loading = false;
@@ -40,7 +42,8 @@ export class VoteComponent implements OnInit {
     private snackBar: MatSnackBar,
     public sanitizer: DomSanitizer,
     private router: Router,
-    private service: ToggleNavService
+    private service: ToggleNavService,
+    private httpService: HttpService
   ) {
     this.createForm();
   }
@@ -104,13 +107,42 @@ export class VoteComponent implements OnInit {
     else {
       this.disabled = true;
       this.loading = true;
-      console.log(this.feedback);
-      console.log(this.formData);
       this.disabled = false;
       this.loading = false;
-      this.next = true;
+      this.httpService
+        .postData(BaseUrl.login_vote, { matric: this.feedback.mat_no })
+        .subscribe(
+          (data: any) => {
+            this.disabled = false;
+            this.loading = false;
+            this.next = true;
+            this.service.setUserData({ data: data, verified: false });
+          },
+          (err) => {
+            console.log(err);
+            this.loading = false;
+            this.disabled = false;
+            this.snackBar.open('Invalid Matric number', 'x', {
+              duration: 5000,
+              panelClass: 'error',
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+            });
+          }
+        );
     }
   }
 
-  ngOnInit(): void {}
+  listDepartment() {
+    this.httpService.getSingleNoAuth(BaseUrl.list_department).subscribe(
+      (data: any) => {
+        this.service.setdataMessage2(data);
+      },
+      (err) => {}
+    );
+  }
+
+  ngOnInit(): void {
+    this.listDepartment();
+  }
 }

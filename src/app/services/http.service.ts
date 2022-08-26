@@ -26,9 +26,7 @@ export class HttpService {
   // }
 
   postData(endpoint: any, data: any): Observable<any[]> {
-    return this.http
-      .post<any[]>(this.base_url + endpoint, data, this.httpOptions)
-      .pipe(retry(2));
+    return this.http.post<any[]>(this.base_url + endpoint, data);
   }
 
   getSingleNoAuth(endpoint: any) {

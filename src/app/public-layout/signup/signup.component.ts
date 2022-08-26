@@ -1,10 +1,22 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { HttpService } from 'src/app/services/http.service';
+import { BaseUrl } from 'src/environments/environment';
 import { register } from '../models/irm';
 import { ToggleNavService } from '../sharedService/toggle-nav.service';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-signup',
@@ -15,11 +27,21 @@ import { ToggleNavService } from '../sharedService/toggle-nav.service';
 export class SignupComponent implements OnInit {
   @ViewChild('fform') feedbackFormDirective: any;
 
+  @ViewChild('card', { static: true })
+  card!: ElementRef<HTMLDivElement>;
+
   feedbackForm: any = FormGroup;
   feedback!: register;
   edit = false;
   disabled = false;
   loading = false;
+
+  department: any;
+  position: any;
+  position2: any;
+  year: any;
+
+  htmlYear = new Date().getFullYear();
 
   formData = new FormData();
   image: any;
@@ -53,9 +75,18 @@ export class SignupComponent implements OnInit {
     private snackBar: MatSnackBar,
     public sanitizer: DomSanitizer,
     private router: Router,
-    private service: ToggleNavService
+    private service: ToggleNavService,
+    private httpService: HttpService
   ) {
     this.createForm();
+    if (this.service.getMessage() == undefined) {
+      this.router.navigate(['/capture']);
+    } else {
+    }
+    const data: any = this.service.getdataMessage();
+    this.department = data.department;
+    this.position2 = data.postion;
+    this.year = data.years;
   }
 
   createForm() {
@@ -121,14 +152,93 @@ export class SignupComponent implements OnInit {
     else {
       this.disabled = true;
       this.loading = true;
-      console.log(this.feedback);
-      console.log(this.formData);
-      this.disabled = false;
-      this.loading = false;
-      this.router.navigate(['/'])
+      let image2: any = this.service.getMessage();
+      const image3 = image2.split('data:image/jpeg;base64,')[1];
+      const year = this.year.filter((name: any) => {
+        if (Number(name.year) == this.htmlYear) {
+          return name;
+        }
+      });
+      const data: any = {
+        name: this.feedback.name,
+        department: this.feedback.department,
+        position: this.feedback.position,
+        matric: this.feedback.matric,
+        email: this.feedback.email,
+        profile: image3,
+        year: year[0].id,
+        aspirant: true,
+      };
+      if (this.feedback.position == '') {
+        delete data.position;
+        delete data.aspirant;
+      }
+      console.log(data);
+      this.httpService.postData(BaseUrl.signup, data).subscribe(
+        (data: any) => {
+          this.disabled = false;
+          this.loading = false;
+          this.snackBar.open('Success', 'x', {
+            duration: 3000,
+            panelClass: 'success',
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          console.log(err);
+          this.loading = false;
+          this.disabled = false;
+          this.snackBar.open(
+            err.error.email || err.error.matric || 'Something went wrong',
+            'x',
+            {
+              duration: 5000,
+              panelClass: 'error',
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+            }
+          );
+        }
+      );
     }
   }
 
-  ngOnInit(): void {}
+  collectData() {
+    this.httpService.getSingleNoAuth(BaseUrl.list_datas).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.department = data.department;
+        this.position2 = data.postion;
+        this.year = data.years;
+        this.service.setdataMessage(data);
+      },
+      (err) => {}
+    );
+  }
 
+  selectposition(id: number) {
+    const data = this.position2.filter((name: any) => {
+      if (name.id == id) {
+        return name;
+      }
+    });
+    this.position = data;
+  }
+
+  initAnimations(): void {
+    gsap.from(this.card.nativeElement.children, {
+      delay: 0.5,
+      duration: 0.4,
+      y: -40,
+      opacity: 0,
+      stagger: 0.15,
+    });
+  }
+
+  ngOnInit(): void {
+    this.initAnimations();
+    this.collectData();
+  }
 }
