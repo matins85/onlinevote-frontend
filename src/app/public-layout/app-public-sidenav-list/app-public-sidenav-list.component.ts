@@ -65,7 +65,6 @@ export class AppPublicSidenavListComponent implements OnInit {
   listDepartment() {
     this.httpService.getSingleNoAuth(BaseUrl.list_department).subscribe(
       (data: any) => {
-        console.log(data);
         this.department = data;
         this.service.setdataMessage2(data);
       },
