@@ -159,6 +159,38 @@ $white: #ffffff;
   background: black;
 }
 
+.chart_p {
+  background: #ffffff;
+  padding: 0.5rem;
+}
+
+.chart {
+  font: normal normal normal 15px/19px JetBrains Mono;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: black;
+  margin-top: 20px;
+}
+
+mat-progress-bar {
+  height: 0.5rem;
+  border-radius: 5px;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  // background-color: rgba(26, 26, 26, 0.16);
+  background-color: #e4e8eb;
+}
+
+::ng-deep .mat-progress-bar .mat-progress-bar-element {
+  // background-color: rgba(26, 26, 26, 0.16);
+  background-color: #e4e8eb;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: #cb8a03;
+}
+
 @keyframes expand {
   0% {
     transform: scale(1);

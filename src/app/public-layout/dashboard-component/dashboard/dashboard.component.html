@@ -51,9 +51,12 @@
                 <div class="right-card" *ngFor="let n of currentData?.details;">
                     <div class="right-card-title">{{ n?.position }}</div>
 
-                    <div class="chart">
-                        <div class="myChart">
-                            <div class="line" [chart]="chart(n.aspirants)"></div>
+                    <div class="chart_p">
+                        <div *ngFor="let a of n.aspirants" class="chart">
+                            <div>{{ a.name }} ({{ a.point }})</div>
+                            <div>
+                                <mat-progress-bar mode="determinate" [value]="a.point"></mat-progress-bar>
+                            </div>
                         </div>
                     </div>
                     <!-- <div class="winner">

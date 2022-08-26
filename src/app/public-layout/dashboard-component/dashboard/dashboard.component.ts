@@ -6,19 +6,16 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 // Gsap module
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { AuthService } from 'src/app/services/auth.service';
-import { ToggleNavService } from '../../sharedService/toggle-nav.service';
-import { Chart } from 'angular-highcharts';
-import { barChart } from '../../../_helpers/barChart';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { HttpService } from 'src/app/services/http.service';
 import { BaseUrl } from 'src/environments/environment';
-import { Options } from 'highcharts';
-import { Subscription } from 'rxjs';
+import { ToggleNavService } from '../../sharedService/toggle-nav.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +37,6 @@ export class DashboardComponent implements OnInit {
   year: any;
   currentData: any;
 
-  // barChart = new Chart(barChart);
   htmlYear = new Date().getFullYear();
   loading = true;
 
@@ -104,61 +100,7 @@ export class DashboardComponent implements OnInit {
   changeId(data?: any) {
     this.id = data.id;
     this.currentData = data;
-  }
-
-  chart(names: any) {
-    console.log(names);
-    const barChart: Options = {
-      chart: {
-        type: 'line',
-      },
-      credits: {
-        enabled: false,
-      },
-      title: {
-        text: '',
-      },
-      yAxis: {
-        visible: true,
-        gridLineColor: 'gray',
-      },
-      legend: {
-        enabled: false,
-      },
-      xAxis: {
-        lineColor: '#fff',
-        categories: [
-          // names[0]['name'] || '#',
-          // names[1]['name'] || '#',
-          // names[2]['name'] || '#',
-          // names[3]['name'] || '#',
-          '#',
-        ],
-      },
-
-      plotOptions: {
-        column: {
-          allowPointSelect: true,
-        },
-        series: {
-          borderRadius: 20,
-        } as any,
-      },
-      series: [
-        {
-          type: 'column',
-          // color: '#506ef9',
-          data: [
-            // { y: names[0]['point'] || 0, color: 'grey' },
-            // { y: names[1]['point'] || 0, color: '#506ef9' },
-            // { y: names[2]['point'] || 0, color: '#ffe8df' },
-            // { y: names[3]['point'] || 0, color: '#fc5185' },
-            { y: 0, color: 'grey' },
-          ],
-        },
-      ],
-    };
-    return new Chart(barChart);
+    console.log(data);
   }
 
   ngOnInit(): void {
