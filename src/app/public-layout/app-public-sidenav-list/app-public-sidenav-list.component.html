@@ -20,14 +20,18 @@
     <hr>
 
     <div>
-        <div style="text-align: left; margin-left: 15px;">
-            <button mat-button class="signup" (click)="onPublicHeaderToggleSidenav()">computer science
-                <span class="material-icons started">fiber_manual_record</span>
-            </button>
-        </div>
-        <div style="text-align: left; margin-left: 15px;">
-            <button mat-button class="signup" (click)="onPublicHeaderToggleSidenav()">public admin
-                <span class="material-icons stop">fiber_manual_record</span>
+        <div *ngFor="let d of department;" style="text-align: left; margin-left: 15px;">
+            <button mat-button [class.active]="d.id == id" (click)="changeId(d)" class="signup">{{ d?.department?.department }}
+                <span *ngIf="d.start == true">
+                    <span  class="material-icons started">
+                        fiber_manual_record
+                    </span>
+                </span>
+                <span *ngIf="d.start == false">
+                    <span class="material-icons stop">
+                    fiber_manual_record
+                    </span>
+                </span>
             </button>
         </div>
     </div>

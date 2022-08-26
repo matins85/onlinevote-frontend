@@ -1,6 +1,14 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { HttpService } from 'src/app/services/http.service';
+import { BaseUrl } from 'src/environments/environment';
 import { ToggleNavService } from '../sharedService/toggle-nav.service';
 
 @Component({
@@ -9,7 +17,6 @@ import { ToggleNavService } from '../sharedService/toggle-nav.service';
   encapsulation: ViewEncapsulation.Emulated,
   styleUrls: ['./app-public-sidenav-list.component.scss'],
 })
-
 export class AppPublicSidenavListComponent implements OnInit {
   @Output() public publicsidenavClose = new EventEmitter();
 
@@ -17,10 +24,16 @@ export class AppPublicSidenavListComponent implements OnInit {
   hide = false;
   panelOpenState = false;
   menu_text = 'usd';
+  department: any;
+  id = 0;
 
-  constructor(private router: Router, public shared: ToggleNavService
-  ) {}
-
+  constructor(
+    private router: Router,
+    private service: ToggleNavService,
+    private httpService: HttpService
+  ) {
+    this.department = this.service.getdataMessage2();
+  }
 
   limit(title: any, limit = 11) {
     if (title === undefined) {
@@ -49,8 +62,25 @@ export class AppPublicSidenavListComponent implements OnInit {
     this.menu_text = type;
   }
 
+  listDepartment() {
+    this.httpService.getSingleNoAuth(BaseUrl.list_department).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.department = data;
+        this.service.setdataMessage2(data);
+      },
+      (err) => {}
+    );
+  }
+
+  changeId(data: any) {
+    this.service.setSidenavData(data);
+    this.service.sendClickEvent();
+    this.onPublicHeaderToggleSidenav();
+  }
+
   ngOnInit(): void {
-    // this.AddProfile();
+    this.listDepartment();
   }
 
   public onPublicHeaderToggleSidenav = () => {

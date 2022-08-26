@@ -17,6 +17,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { BaseUrl } from 'src/environments/environment';
+import { Options } from 'highcharts';
+import { Subscription } from 'rxjs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,9 +40,11 @@ export class DashboardComponent implements OnInit {
   year: any;
   currentData: any;
 
-  barChart = new Chart(barChart);
+  // barChart = new Chart(barChart);
   htmlYear = new Date().getFullYear();
   loading = true;
+
+  clickEventSubscription?: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -53,6 +57,9 @@ export class DashboardComponent implements OnInit {
     this.department = this.service.getdataMessage2();
     const data: any = this.service.getdataMessage();
     this.year = data?.years;
+    this.clickEventSubscription = this.service.getClickEvent().subscribe(() => {
+      this.changeId(this.service.getSidenavData());
+    });
   }
 
   initAnimations(): void {
@@ -94,10 +101,64 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  changeId(data: any) {
+  changeId(data?: any) {
     this.id = data.id;
     this.currentData = data;
-    console.log(data);
+  }
+
+  chart(names: any) {
+    console.log(names);
+    const barChart: Options = {
+      chart: {
+        type: 'line',
+      },
+      credits: {
+        enabled: false,
+      },
+      title: {
+        text: '',
+      },
+      yAxis: {
+        visible: true,
+        gridLineColor: 'gray',
+      },
+      legend: {
+        enabled: false,
+      },
+      xAxis: {
+        lineColor: '#fff',
+        categories: [
+          // names[0]['name'] || '#',
+          // names[1]['name'] || '#',
+          // names[2]['name'] || '#',
+          // names[3]['name'] || '#',
+          '#',
+        ],
+      },
+
+      plotOptions: {
+        column: {
+          allowPointSelect: true,
+        },
+        series: {
+          borderRadius: 20,
+        } as any,
+      },
+      series: [
+        {
+          type: 'column',
+          // color: '#506ef9',
+          data: [
+            // { y: names[0]['point'] || 0, color: 'grey' },
+            // { y: names[1]['point'] || 0, color: '#506ef9' },
+            // { y: names[2]['point'] || 0, color: '#ffe8df' },
+            // { y: names[3]['point'] || 0, color: '#fc5185' },
+            { y: 0, color: 'grey' },
+          ],
+        },
+      ],
+    };
+    return new Chart(barChart);
   }
 
   ngOnInit(): void {

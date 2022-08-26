@@ -9,6 +9,7 @@ export class ToggleNavService {
   message2: string | undefined;
   message3: string | undefined;
   message4: string | undefined;
+  message5: string | undefined;
 
   private subject = new Subject<any>();
 
@@ -44,6 +45,15 @@ export class ToggleNavService {
 
   getUserData() {
     return this.message4;
+  }
+
+  //
+  setSidenavData(data: any) {
+    this.message5 = data;
+  }
+
+  getSidenavData() {
+    return this.message5;
   }
 
   sendClickEvent() {
