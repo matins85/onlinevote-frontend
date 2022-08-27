@@ -162,17 +162,11 @@ export class SignupComponent implements OnInit {
       const data: any = {
         name: this.feedback.name,
         department: this.feedback.department,
-        position: this.feedback.position,
         matric: this.feedback.matric,
         email: this.feedback.email,
         profile: image3,
         year: year[0].id,
-        aspirant: true,
       };
-      if (this.feedback.position == '') {
-        delete data.position;
-        delete data.aspirant;
-      }
       this.httpService.postData(BaseUrl.signup, data).subscribe(
         (data: any) => {
           this.disabled = false;

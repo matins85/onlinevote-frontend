@@ -4,7 +4,7 @@
             <div class="left_C">
                 <div *ngIf="department">
                     <div *ngFor="let d of department;">
-                        <button mat-button [class.active]="d.id == id" (click)="changeId(d)" class="button">{{ d?.department?.department }}
+                        <button mat-button [class.active]="d.id == id" (click)="changeId(d)" class="button">{{ limit(d?.department?.department || '') }}
                             <span *ngIf="d.start == true">
                                 <span  class="material-icons started">
                                     fiber_manual_record

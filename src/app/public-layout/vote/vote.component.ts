@@ -105,10 +105,8 @@ export class VoteComponent implements OnInit {
       });
     } // end of if
     else {
-      this.disabled = true;
       this.loading = true;
-      this.disabled = false;
-      this.loading = false;
+      this.disabled = true;
       this.httpService
         .postData(BaseUrl.login_vote, { matric: this.feedback.mat_no })
         .subscribe(
