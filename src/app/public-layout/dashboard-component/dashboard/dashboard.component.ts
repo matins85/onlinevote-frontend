@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  limit(title: any, limit = 18) {
+  limit(title: any, limit = 14) {
     if (title === undefined) {
       return '';
     } else {
