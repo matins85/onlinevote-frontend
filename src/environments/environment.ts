@@ -9,7 +9,7 @@ export const environment = {
 export const BaseUrl = {
   jwt_token: 'MELINA_ACCESS',
   refresh_token: 'MELINA_REFRESH',
-  server: 'http://127.0.0.1:3000/',
+  server: 'https://onlinevoteserver.herokuapp.com/',
   login: '',
   signup: 'accounts/api/onlinevote-create-voter/',
   list_datas: 'accounts/api/onlinevote-list-year-department-school/',
