@@ -38,6 +38,17 @@
                 <mat-error>{{formErrors.department}}</mat-error>
             </mat-form-field>
         </div>
+        <div>
+            <!-- level -->
+            <mat-form-field  class="full-width" appearance="outline">
+                <mat-label>Level</mat-label>
+                <mat-select matInput formControlName="level" required>
+                    <mat-option value="nd">ND</mat-option>
+                    <mat-option value="hnd">HND</mat-option>
+                </mat-select>
+                <mat-error>{{formErrors.level}}</mat-error>
+            </mat-form-field>
+        </div>
 
         <div class="login_submitt_p">
             <button mat-button class="update" [disabled]="disabled === true">

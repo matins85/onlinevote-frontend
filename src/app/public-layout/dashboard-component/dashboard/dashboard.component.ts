@@ -36,6 +36,8 @@ export class DashboardComponent implements OnInit {
   department: any;
   year: any;
   currentData: any;
+  nd: any;
+  hnd: any;
 
   htmlYear = new Date().getFullYear();
   loading = true;
@@ -116,6 +118,14 @@ export class DashboardComponent implements OnInit {
   changeId(data?: any) {
     this.id = data.id;
     this.currentData = data;
+    let nd = data.details.filter((name: any) => {
+      return name.level == 'nd';
+    });
+    let hnd = data.details.filter((name: any) => {
+      return name.level == 'hnd';
+    });
+    this.nd = nd;
+    this.hnd = hnd;
   }
 
   ngOnInit(): void {

@@ -8,6 +8,7 @@ export interface register {
   name: string;
   matric: string;
   department: string;
+  level: string;
 }
 
 export interface login {

@@ -46,9 +46,13 @@
                     <!-- <option *ngFor="let y of year" [value]="y?.id">{{ y.year }}</option> -->
                 </select>
             </div>
-
+            <!-- HND -->
             <div *ngIf="currentData?.start == true">
-                <div class="right-card" *ngFor="let n of currentData?.details;">
+                <div class="nd">HND LEVEL</div>
+                <div *ngIf="hnd.length < 1" class="chart_p" style="text-align: center; font: normal normal normal 15px/19px JetBrains Mono;">
+                    <div>No post and aspirant yet!</div>
+                </div>
+                <div class="right-card" *ngFor="let n of hnd;">
                     <div class="right-card-title">{{ n?.position }}</div>
 
                     <div class="chart_p" *ngIf="n.aspirants.length > 0">
@@ -62,6 +66,34 @@
                     <!--  -->
                     <div class="chart_p" style="text-align: center; font: normal normal normal 15px/19px JetBrains Mono;" *ngIf="n.aspirants.length < 1">
                         <div>No aspirant yet!</div>
+                    </div>
+                    <!-- <div class="winner">
+                        <span class="material-icons-round winner-icon">emoji_events</span>
+                        <div>Molly keh</div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- ND -->
+            <div *ngIf="currentData?.start == true">
+                <div class="nd">ND LEVEL</div>
+                <div *ngIf="nd.length < 1" class="chart_p" style="text-align: center; font: normal normal normal 15px/19px JetBrains Mono;">
+                    <div>No aspirant yet!</div>
+                </div>
+                <div class="right-card" *ngFor="let n of nd;">
+                    <div class="right-card-title">{{ n?.position }}</div>
+
+                    <div class="chart_p" *ngIf="n.nd.length > 0">
+                        <div *ngFor="let a of n.nd" class="chart">
+                            <div>{{ a.name }} ({{ a.point }})</div>
+                            <div>
+                                <mat-progress-bar mode="determinate" [value]="a.point"></mat-progress-bar>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="chart_p" style="text-align: center; font: normal normal normal 15px/19px JetBrains Mono;" *ngIf="n.nd.length < 1">
+                        <div>No position and aspirant yet!</div>
                     </div>
                     <!-- <div class="winner">
                         <span class="material-icons-round winner-icon">emoji_events</span>

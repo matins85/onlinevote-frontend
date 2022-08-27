@@ -52,6 +52,7 @@ export class SignupComponent implements OnInit {
     name: '',
     matric: '',
     department: '',
+    level: '',
   };
 
   validationMessages: any = {
@@ -66,6 +67,9 @@ export class SignupComponent implements OnInit {
       required: 'required.',
     },
     department: {
+      required: 'required.',
+    },
+    level: {
       required: 'required.',
     },
   };
@@ -95,7 +99,7 @@ export class SignupComponent implements OnInit {
       name: ['', [Validators.required]],
       matric: ['', [Validators.required]],
       department: ['', [Validators.required]],
-      position: [''],
+      level: ['', [Validators.required]],
     });
 
     this.feedbackForm.valueChanges.subscribe((data: any) =>
@@ -166,6 +170,7 @@ export class SignupComponent implements OnInit {
         email: this.feedback.email,
         profile: image3,
         year: year[0].id,
+        level: this.feedback.level,
       };
       this.httpService.postData(BaseUrl.signup, data).subscribe(
         (data: any) => {
