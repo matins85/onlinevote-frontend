@@ -51,13 +51,17 @@
                 <div class="right-card" *ngFor="let n of currentData?.details;">
                     <div class="right-card-title">{{ n?.position }}</div>
 
-                    <div class="chart_p">
+                    <div class="chart_p" *ngIf="n.aspirants.length > 0">
                         <div *ngFor="let a of n.aspirants" class="chart">
                             <div>{{ a.name }} ({{ a.point }})</div>
                             <div>
                                 <mat-progress-bar mode="determinate" [value]="a.point"></mat-progress-bar>
                             </div>
                         </div>
+                    </div>
+                    <!--  -->
+                    <div class="chart_p" style="text-align: center; font: normal normal normal 15px/19px JetBrains Mono;" *ngIf="n.aspirants.length < 1">
+                        <div>No aspirant yet!</div>
                     </div>
                     <!-- <div class="winner">
                         <span class="material-icons-round winner-icon">emoji_events</span>
