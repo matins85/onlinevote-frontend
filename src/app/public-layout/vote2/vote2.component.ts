@@ -22,8 +22,8 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrls: ['./vote2.component.scss'],
 })
 export class Vote2Component implements OnInit {
-  @ViewChild('card', { static: true })
-  card!: ElementRef<HTMLDivElement>;
+  // @ViewChild('card', { static: true })
+  // card!: ElementRef<HTMLDivElement>;
 
   loading = false;
   data: any;
@@ -72,15 +72,15 @@ export class Vote2Component implements OnInit {
     this.department = departm[0];
   }
 
-  initAnimations(): void {
-    gsap.from(this.card.nativeElement.children, {
-      delay: 0.5,
-      duration: 0.4,
-      y: -40,
-      opacity: 0,
-      stagger: 0.15,
-    });
-  }
+  // initAnimations(): void {
+  //   gsap.from(this.card.nativeElement.children, {
+  //     delay: 0.5,
+  //     duration: 0.4,
+  //     y: -40,
+  //     opacity: 0,
+  //     stagger: 0.15,
+  //   });
+  // }
 
   listDepartment() {
     this.httpService.getSingleNoAuth(BaseUrl.list_department).subscribe(
@@ -110,7 +110,7 @@ export class Vote2Component implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initAnimations();
+    // this.initAnimations();
     this.listDepartment();
   }
 

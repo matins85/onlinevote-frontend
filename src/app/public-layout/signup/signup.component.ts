@@ -27,8 +27,8 @@ gsap.registerPlugin(ScrollTrigger);
 export class SignupComponent implements OnInit {
   @ViewChild('fform') feedbackFormDirective: any;
 
-  @ViewChild('card', { static: true })
-  card!: ElementRef<HTMLDivElement>;
+  // @ViewChild('card', { static: true })
+  // card!: ElementRef<HTMLDivElement>;
 
   feedbackForm: any = FormGroup;
   feedback!: register;
@@ -218,18 +218,18 @@ export class SignupComponent implements OnInit {
     this.position = data;
   }
 
-  initAnimations(): void {
-    gsap.from(this.card.nativeElement.children, {
-      delay: 0.5,
-      duration: 0.4,
-      y: -40,
-      opacity: 0,
-      stagger: 0.15,
-    });
-  }
+  // initAnimations(): void {
+  //   gsap.from(this.card.nativeElement.children, {
+  //     delay: 0.5,
+  //     duration: 0.4,
+  //     y: -40,
+  //     opacity: 0,
+  //     stagger: 0.15,
+  //   });
+  // }
 
   ngOnInit(): void {
-    this.initAnimations();
+    // this.initAnimations();
     this.collectData();
   }
 }
