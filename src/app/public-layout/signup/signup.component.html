@@ -1,6 +1,10 @@
 <div class="wrapper">
 
     <form #card class="card-body" novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="image-p">
+            <img [src]="displayImage(image)" class="image" alt="">
+        </div>
         
         <div class="vote">register</div>
 

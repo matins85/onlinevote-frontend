@@ -2,6 +2,10 @@
 
     <div class="wrapper2">
 
+        <div class="image-p">
+            <img [src]="displayImage(data?.profile)" class="image" alt="">
+        </div>
+
         <div class="header">welcome, {{ data?.name }}</div>
 
         <div class="card" #card>

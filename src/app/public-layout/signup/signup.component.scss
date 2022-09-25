@@ -5,6 +5,18 @@ $white: #ffffff;
   padding-right: 10px;
   padding-bottom: 1rem;
 
+  .image-p {
+    margin-top: 9rem;
+    text-align: center;
+  }
+
+  .image {
+    width: 15rem;
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
   .vote {
     font: normal normal normal 30px/35px Inter;
     font-weight: 550;
@@ -177,6 +189,15 @@ $white: #ffffff;
     }
     .full-width {
       width: 100%;
+    }
+
+    .image-p {
+      margin-top: unset;
+    }
+
+    .image {
+      width: 100%;
+      height: 100%;
     }
   }
 }

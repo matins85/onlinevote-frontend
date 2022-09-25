@@ -86,6 +86,7 @@ export class SignupComponent implements OnInit {
     if (this.service.getMessage() == undefined) {
       this.router.navigate(['/capture']);
     } else {
+      this.image = this.service.getMessage();
     }
     const data: any = this.service.getdataMessage();
     this.department = data.department;
@@ -139,6 +140,10 @@ export class SignupComponent implements OnInit {
       this.filename = file.name;
       this.image = URL.createObjectURL(event.target.files[0]);
     }
+  }
+
+  displayImage(image: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
   }
 
   onSubmit() {

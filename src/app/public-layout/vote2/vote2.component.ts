@@ -6,6 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -37,7 +38,8 @@ export class Vote2Component implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private service: ToggleNavService,
-    private httpService: HttpService
+    private httpService: HttpService,
+    public sanitizer: DomSanitizer
   ) {
     if (this.service.getUserData() == undefined) {
       this.router.navigate(['/vote']);
@@ -82,13 +84,20 @@ export class Vote2Component implements OnInit {
   //   });
   // }
 
+  displayImage(image: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(
+      'data:image/png;base64,' + image
+    );
+  }
+
   listDepartment() {
     this.httpService.getSingleNoAuth(BaseUrl.list_department).subscribe(
       (data: any) => {
         const data2 = data.filter((name: any) => {
           if (
-            (name.department.id == this.data.department.id) &&
-            (name.year.year == this.htmlYear) && (name.department.department.toLowerCase() != 'sug')
+            name.department.id == this.data.department.id &&
+            name.year.year == this.htmlYear &&
+            name.department.department.toLowerCase() != 'sug'
           ) {
             return name;
           }
